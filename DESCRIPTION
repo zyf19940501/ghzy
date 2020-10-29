@@ -1,0 +1,27 @@
+Package: ghzy
+Type: Package
+Title: Ghzy R
+Version: 0.1.1
+Author: yufei zhong
+Maintainer: The package maintainer <yourself@somewhere.net>
+Description: Mujosh and aojo database.
+License: MIT
+Encoding: UTF-8
+LazyData: true
+Imports: 
+    dplyr,
+    tidyverse,
+    dbplyr,
+    data.table
+Depdends:
+    lubridate,
+    tidyverse,
+    dbplyr,
+    data.table
+Suggests: 
+    knitr,
+    rmarkdown
+VignetteBuilder: knitr
+RoxygenNote: 7.1.1
+URL: https://github.com/zyf19940501/ghzy
+BugReports: https://github.com/zyf19940501/ghzy/issues
