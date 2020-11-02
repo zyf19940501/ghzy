@@ -25,7 +25,7 @@ get_stock_data(
 \item{...}{需要添加汇总字段,默认年,月,SHOP_NO,SKU_NO}
 }
 \value{
-data frame
+库存数据 包含门店库存和总仓库存
 }
 \description{
 从BI数仓中获取库存数据 按照年、月、SHOP_NO,SKU_NO汇总

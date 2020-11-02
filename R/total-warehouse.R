@@ -6,7 +6,7 @@
 #' @param stock_date 库存日期 默认昨天
 #' @param goods_categories 分析大类
 #' @param ... 需要添加汇总字段,默认年,月,SHOP_NO,SKU_NO
-#' @import tidyverse dbplyr
+#' @import  dbplyr
 #' @return a data frame
 #' @encoding UTF-8
 #' @export

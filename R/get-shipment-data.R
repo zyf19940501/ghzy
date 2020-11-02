@@ -8,7 +8,7 @@
 #' @param start_date   时间周期
 #' @param end_date     时间周期
 #' @param ...   汇总字段 可以按照 SHOP_NO,SKU_NO,年,月等
-#'
+#' @import  dbplyr
 #' @return shipment data
 #' @export
 #'

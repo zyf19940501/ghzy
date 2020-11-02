@@ -8,8 +8,8 @@
 #' @param goods_categories 分析大类
 #' @param ... 需要添加汇总字段,默认年,月,SHOP_NO,SKU_NO
 #'
-#' @return  data frame
-#' @import tidyverse dbplyr data.table
+#' @return  库存数据 包含门店库存和总仓库存
+#' @import  dbplyr
 #' @encoding UTF-8
 #' @export
 #'

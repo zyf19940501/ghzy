@@ -1,7 +1,7 @@
 Package: ghzy
 Type: Package
 Title: Ghzy R
-Version: 0.1.1
+Version: 0.1.2
 Author: yufei zhong
 Maintainer: The package maintainer <yourself@somewhere.net>
 Description: Mujosh and aojo database.
@@ -17,7 +17,8 @@ Depdends:
     lubridate,
     tidyverse,
     dbplyr,
-    data.table
+    data.table,
+    dplyr
 Suggests: 
     knitr,
     rmarkdown
