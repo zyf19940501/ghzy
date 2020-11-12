@@ -20,7 +20,7 @@
 get_stock_data <- function(con, brand_name, stock_date, goods_categories = c("镜架", "太阳镜"), ...) {
 
   # store stcok
-  store_table <- filter(store(con), 一级部门 == brand_name)
+  store_table <- filter(store(con), 一级部门 %in% brand_name)
   sku_table <- sku(con) %>%
     filter(分析大类 %in% goods_categories)
 

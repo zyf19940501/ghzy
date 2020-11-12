@@ -21,7 +21,6 @@
 #' 当需要添加字段属性较多时，可以用 get_sales_data()在关联门店信息表和商品信息表
 
 #'
-#' @import tidyverse
 #' @import dbplyr
 #' @return sales data
 #' @export

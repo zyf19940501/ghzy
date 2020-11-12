@@ -18,7 +18,7 @@
 get_store_inventory_data <- function(con, brand_name, stock_date, goods_categories , ...) {
 
   # store stcok
-  store_table <- filter(store(con), 一级部门 == brand_name)
+  store_table <- filter(store(con), 一级部门 %in% brand_name)
   sku_table <- sku(con) %>%
     filter(分析大类 %in% goods_categories)
   # inventory stock

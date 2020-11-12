@@ -4,7 +4,7 @@
 #'
 #' @param con  BI con connector
 #'
-#' @import dbplyr tidyverse
+#' @import dbplyr
 #' @encoding UTF-8
 #' @export
 #'
