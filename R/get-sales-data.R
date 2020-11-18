@@ -42,7 +42,7 @@ get_sales_data <- function(con,brand_name,start_date,end_date,...){
       to_date(end_date, "yyyy-mm-dd")
     )) %>%
     mutate(年 = year(BILL_DATE1), 月 = month(BILL_DATE1)) %>%
-    inner_join(filter(store(con),一级部门==brand_name)) %>%
+    inner_join(filter(store(con),一级部门 %in% brand_name)) %>%
     inner_join(sku(con)) %>%
     group_by(...) %>%
     summarise(

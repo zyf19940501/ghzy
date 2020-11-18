@@ -4,7 +4,10 @@
 #'
 #'
 #' @param con  BI con connector
-#'
+#' @param brand_name brand_name
+#' @param channel_type store type
+#' @param area_name the area of store
+#' @param boo_name the boss of store
 #' @import dbplyr tidyverse
 #' @encoding UTF-8
 #' @return  a dataframe
@@ -17,7 +20,7 @@
 
 
 
-store <- function(con) {
+store <- function(con,brand_name,channel_type = NULL ,area_name = NULL,boss_name = NULL) {
 
   # store information
   store_table1 <- tbl(con, in_schema("DW", "MD_SHOP_DETAIL")) %>%
@@ -43,12 +46,12 @@ store <- function(con) {
     mutate(ERP_NO = "") %>%
     mutate(BRAND_NAME = case_when(
       fuzhu1 == "DC01" ~ "木九十",
-      fuzhu1 == "DC01" ~ "木九十",
+      fuzhu1 == "EM06" ~ "木九十",
       fuzhu1 == "DC02" ~ "aojo"
     )) %>%
     mutate(SHOP_TYPE39 = case_when(
       fuzhu1 == "DC01" ~ "木九十事业部",
-      fuzhu1 == "DC01" ~ "木九十事业部",
+      fuzhu1 == "EM06" ~ "木九十事业部",
       fuzhu1 == "DC02" ~ "aojo事业部"
     )) %>%
     select(SHOP_NO, SHOP_NAME , ERP_NO,BRAND_NAME,SHOP_TYPE39) %>%
@@ -81,5 +84,39 @@ store <- function(con) {
     mutate(仓位类型 = '总仓库存')
 
   store_table <- union_all(store_table1,store_table2)
+  
+  if(is.null(brand_name)){
+    stop("请明确输入事业部名称,如木九十事业部")
+  } else {
+    store_table <- store_table %>%  filter(一级部门 %in% brand_name)
+  }
+  
+  
+  # if(is.null(channel_type)){
+  #   store_table <- store_table 
+  # } else {
+  #   store_table <- store_table %>%  filter(门店性质 %in% channel_type)
+  # }
+  # 
+  if(is.null(channel_type)){
+    store_table <- store_table 
+  } else {
+    store_table <- store_table %>%  filter(门店性质 %in% channel_type)
+  }
+  
+  if(is.null(area_name)){
+    store_table <- store_table 
+  } else {
+    store_table <- store_table %>%  filter(管辖区域 %in% area_name)
+  }
+  
+  #groups_vars <- quos(...)
+  
+  if(is.null(boss_name)){
+    store_table <- store_table
+  } else {
+    store_table <- store_table %>%  filter(老板 %in% boss_name)
+  }
+  
 }
 
