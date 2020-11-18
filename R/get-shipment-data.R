@@ -11,6 +11,7 @@
 #' @param channel_type 门店渠道
 #' @param area_name 管辖区域 
 #' @param boss_name 加盟商客户
+#' @param category_name the category name of goods
 #' @import  dbplyr
 #' @return shipment data
 #' @export
@@ -21,9 +22,10 @@
 #'
 #' @encoding UTF-8
 #'
-get_shipment_data <- function(con,...,start_date,end_date,brand_name,channel_type = NULL ,area_name = NULL,boss_name = NULL){
+get_shipment_data <- function(con,...,start_date,end_date,brand_name,channel_type = NULL ,area_name = NULL,boss_name = NULL,category_name = NULL){
   
   store_table <- store(con = con,brand_name = brand_name,channel_type = channel_type ,area_name = area_name,boss_name = boss_name)
+  sku_table <- sku(con,category_name =  category_name )
   
   tbl(con, in_schema("DW", "DW_FIC_SALE_F")) %>%
     select(BILL_DATE1, SKU_NO, SHOP_NO, BILL_QTY,MONEY,PRICE_MONEY) %>%
@@ -33,7 +35,7 @@ get_shipment_data <- function(con,...,start_date,end_date,brand_name,channel_typ
     )) %>%
     mutate(年 = year(BILL_DATE1), 月 = month(BILL_DATE1)) %>%
     inner_join(store_table) %>%
-    inner_join(sku(con)) %>%
+    inner_join(sku_table) %>%
     group_by(...) %>%
     summarise(
       含税销售金额 = sum(MONEY, na.rm = TRUE),

@@ -12,7 +12,7 @@
 #' @param channel_type 门店渠道
 #' @param area_name 管辖区域 
 #' @param boss_name 加盟商客户
-#' 
+#' @param category_name the category name of goods
 #' 
 #'
 #' @details  该包系列中`...`参数,为用户想要汇总字段，最小的维度可到SHOP_NO,SKU_NO,其余的字段属性可根据需要添加
@@ -39,10 +39,12 @@
 
 
 
-get_sales_data <- function(con,...,start_date,end_date,brand_name,channel_type = NULL ,area_name = NULL,boss_name = NULL){
+get_sales_data <- function(con,...,start_date,end_date,brand_name,channel_type = NULL ,area_name = NULL,boss_name = NULL,category_name = NULL){
 
-  store_table <- store(con = con,brand_name = brand_name,channel_type = channel_type ,area_name = area_name,boss_name = boss_name)
-
+  store_table <- store(con,brand_name = brand_name,channel_type = channel_type ,area_name = area_name,boss_name = boss_name)
+  
+  sku_table <- sku(con,category_name =  category_name )
+  
   tbl(con, in_schema("DW", "DW_SALE_SHOP_F")) %>%
     select(BILL_DATE1, SKU_NO, SHOP_NO, BILL_QTY, BILL_MONEY2, PRICE) %>%
     filter(between(
@@ -51,7 +53,7 @@ get_sales_data <- function(con,...,start_date,end_date,brand_name,channel_type =
     )) %>%
     mutate(年 = year(BILL_DATE1), 月 = month(BILL_DATE1)) %>%
     inner_join(store_table) %>%
-    inner_join(sku(con)) %>%
+    inner_join(sku_table) %>%
     group_by(...) %>%
     summarise(
       金额 = sum(BILL_MONEY2, na.rm = TRUE),
