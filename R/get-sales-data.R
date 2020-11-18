@@ -5,10 +5,15 @@
 #' @description  获取销售数据 有数量、金额、吊牌金额三个指标，维度需自行指定
 #'
 #' @param con  BI con connector
-#' @param brand_name 事业部名称
-#' @param start_date 销售数据开始日期
-#' @param end_date   销售数据截至日期
 #' @param ... 汇总字段 默认为空 可指定任意门店属性或商品属性字段
+#' @param start_date 销售数据开始日期
+#' @param end_date   销售数据结束日期
+#' @param brand_name 事业部名称
+#' @param channel_type 门店渠道
+#' @param area_name 管辖区域 
+#' @param boss_name 加盟商客户
+#' 
+#' 
 #'
 #' @details  该包系列中`...`参数,为用户想要汇总字段，最小的维度可到SHOP_NO,SKU_NO,其余的字段属性可根据需要添加
 #'
@@ -34,7 +39,10 @@
 
 
 
-get_sales_data <- function(con,brand_name,start_date,end_date,...){
+get_sales_data <- function(con,...,start_date,end_date,brand_name,channel_type = NULL ,area_name = NULL,boss_name = NULL){
+
+  store_table <- store(con = con,brand_name = brand_name,channel_type = channel_type ,area_name = area_name,boss_name = boss_name)
+
   tbl(con, in_schema("DW", "DW_SALE_SHOP_F")) %>%
     select(BILL_DATE1, SKU_NO, SHOP_NO, BILL_QTY, BILL_MONEY2, PRICE) %>%
     filter(between(
@@ -42,15 +50,20 @@ get_sales_data <- function(con,brand_name,start_date,end_date,...){
       to_date(end_date, "yyyy-mm-dd")
     )) %>%
     mutate(年 = year(BILL_DATE1), 月 = month(BILL_DATE1)) %>%
-    inner_join(filter(store(con),一级部门 %in% brand_name)) %>%
+    inner_join(store_table) %>%
     inner_join(sku(con)) %>%
     group_by(...) %>%
     summarise(
       金额 = sum(BILL_MONEY2, na.rm = TRUE),
       数量 = sum(BILL_QTY, na.rm = TRUE),
       吊牌金额 = sum(BILL_QTY * PRICE, na.rm = TRUE)) %>%
-    collect()
+    collect() %>%
+    mutate(折扣率:= 金额 / 吊牌金额) %>% 
+    arrange(...)
 
 
   # return(res)
 }
+
+
+
