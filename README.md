@@ -11,13 +11,13 @@ devtools::install_github('zyf19940501/ghzy')
 
 Gitee下载
 
-
 ### 使用示例
+
 #### 销售数据
 
 用`get_salse_data()`函数获取按照目标维度汇总的销售数据
 
-``` r
+``` R
 library(ROracle)
 library(DBI)
 library(ghzy)
