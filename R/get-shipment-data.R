@@ -18,7 +18,7 @@
 #' @export
 #'
 #' @examples
-#' get_shipment_data(con,brand_name = '木九十事业部',start_date = '2020-01-01',end_date = '2020-10-25',年,月)
+#' get_shipment_data(con,年,月,start_date = '2020-01-01',end_date = '2020-10-25',brand_name = '木九十事业部')
 #'
 #'
 #' @encoding UTF-8

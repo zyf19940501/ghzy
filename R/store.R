@@ -14,7 +14,7 @@
 #' @return  a dataframe
 #'
 #' @examples
-#' store <- store(con)
+#' store <- store(con,brand_name = "mujosh")
 #' @export
 #'
 #'

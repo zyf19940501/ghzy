@@ -34,7 +34,7 @@
 #'
 #' @examples
 #' get_sales_data
-#' get_sales_data(con,brand_name = 'MUJOSH',start_date = '2020-01-01',end_date = '2020-10-25',SHOP_NO,SKU_NO)
+#' get_sales_data(con,门店性质,分析大类,start_date = '2020-01-01',end_date = '2020-10-25',brand_name = 'MUJOSH')
 #'
 #' @encoding UTF-8
 
