@@ -12,39 +12,7 @@ devtools::install_github('zyf19940501/ghzy')
 Gitee下载
 
 
-
 ### 使用示例
-
-
-
-#### 销售数据
-
-
-
-### install 
-
-devtools::install_github("zyf19940501/ghzy")
-
-在光合作用工作时，把常用的取数逻辑用函数打包，减少后期取数时的代码量，以及重复量。
-
-
-
-### 安装
-
-github上下载
-
-```R
-devtools::install_github('zyf19940501/ghzy')
-```
-
-Gitee下载
-
-
-
-### 使用示例
-
-
-
 #### 销售数据
 
 用`get_salse_data()`函数获取按照目标维度汇总的销售数据
