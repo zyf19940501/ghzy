@@ -11,6 +11,7 @@
 #' @param channel_type 门店渠道
 #' @param area_name 管辖区域 
 #' @param boss_name 加盟商客户
+#' @param shop_no the shop of Number
 #' @param category_name the category name of goods
 #' @import  dbplyr
 #' @return shipment data
@@ -22,13 +23,18 @@
 #'
 #' @encoding UTF-8
 #'
-get_shipment_data <- function(con,...,start_date,end_date,brand_name,channel_type = NULL ,area_name = NULL,boss_name = NULL,category_name = NULL){
-  
-  store_table <- store(con = con,brand_name = brand_name,channel_type = channel_type ,area_name = area_name,boss_name = boss_name)
-  sku_table <- sku(con,category_name =  category_name )
-  
+get_shipment_data <- function(con, ..., start_date, end_date,
+                              brand_name, channel_type = NULL, area_name = NULL,
+                              boss_name = NULL, shop_no = NULL, category_name = NULL) {
+  store_table <- store(con,
+    brand_name = brand_name, channel_type = channel_type,
+    area_name = area_name, boss_name = boss_name, shop_no = shop_no
+  )
+
+  sku_table <- sku(con, category_name = category_name)
+
   tbl(con, in_schema("DW", "DW_FIC_SALE_F")) %>%
-    select(BILL_DATE1, SKU_NO, SHOP_NO, BILL_QTY,MONEY,PRICE_MONEY) %>%
+    select(BILL_DATE1, SKU_NO, SHOP_NO, BILL_QTY, MONEY, PRICE_MONEY) %>%
     filter(between(
       BILL_DATE1, to_date(start_date, "yyyy-mm-dd"),
       to_date(end_date, "yyyy-mm-dd")
@@ -40,8 +46,9 @@ get_shipment_data <- function(con,...,start_date,end_date,brand_name,channel_typ
     summarise(
       含税销售金额 = sum(MONEY, na.rm = TRUE),
       数量 = sum(BILL_QTY, na.rm = TRUE),
-      吊牌金额 = sum(PRICE_MONEY, na.rm = TRUE)) %>%
-    collect() %>% 
+      吊牌金额 = sum(PRICE_MONEY, na.rm = TRUE)
+    ) %>%
+    collect() %>%
     arrange(...)
   # return(res)
 }

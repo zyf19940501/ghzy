@@ -8,6 +8,7 @@
 #' @param channel_type store type
 #' @param area_name the area of store
 #' @param boo_name the boss of store
+#' @param shop_no the shop of Number
 #' @import dbplyr tidyverse
 #' @encoding UTF-8
 #' @return  a dataframe
@@ -20,7 +21,7 @@
 
 
 
-store <- function(con,brand_name,channel_type = NULL ,area_name = NULL,boss_name = NULL) {
+store <- function(con,brand_name,channel_type = NULL ,area_name = NULL,boss_name = NULL,shop_no = NULL) {
 
   # store information
   store_table1 <- tbl(con, in_schema("DW", "MD_SHOP_DETAIL")) %>%
@@ -116,6 +117,12 @@ store <- function(con,brand_name,channel_type = NULL ,area_name = NULL,boss_name
     store_table <- store_table
   } else {
     store_table <- store_table %>%  filter(老板 %in% boss_name)
+  }
+  
+  if(is.null(shop_no)){
+    store_table <- store_table
+  } else {
+    store_table <- store_table %>%  filter(SHOP_NO %in% shop_no)
   }
   
 }
