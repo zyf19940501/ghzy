@@ -42,3 +42,14 @@ dt <- get_sales_data(con,年,月,分析大类,SHOP_NO,start_date = '2020-10-17',
 dt <- get_sales_data(con,年,月,SHOP_NO,SKU_NO,start_date = '2020-10-17',end_date = '2020-11-16',brand_name = 'aojo事业部'，area_name = "华东")
 dt <- get_sales_data(con,年,月,SHOP_NO,SKU_NO,start_date = '2020-10-17',end_date = '2020-11-16',brand_name = 'aojo事业部',channel_type = "直营")
 ```
+
+
+
+#### 出货数据
+
+用`get_shipment_data()`函数获取汇总的出货数据
+
+```R
+dt <- get_shipment_data(con,年,月,start_date = '2020-01-01',end_date = '2020-10-25',brand_name = '木九十事业部')
+```
+

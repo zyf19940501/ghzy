@@ -1,26 +1,34 @@
 
 #' get total warehouse inventory from BI database
 #'
-#' @param con BI con connector
-#' @param brand_name 事业部
-#' @param stock_date 库存日期 默认昨天
-#' @param goods_categories 分析大类
 #' @param ... 需要添加汇总字段,默认年,月,SHOP_NO,SKU_NO
+#' @param brand_name  事业部名称
+#' @param channel_type 门店渠道
+#' @param area_name 管辖区域 
+#' @param boss_name 加盟商客户
+#' @param shop_no the shop of Number
+#' @param stock_date  库存日期 默认昨天
+#' @param category_name  分析大类
 #' @import  dbplyr
-#' @return a data frame
+#' @return a data frame total warehouse
 #' @encoding UTF-8
 #' @export
 #'
 #' @examples
-#' dt <- get_total_warehouse_data(con = con,brand_name = 'mujosh',stock_date = lubridate::today()-days(1),goods_categories = c('lens'),SHOP_NO)
+#' dt <- get_total_warehouse_data(con = con,SHOP_NO,brand_name = 'mujosh',stock_date = lubridate::today()-days(1),goods_categories = c('lens'),SHOP_NO)
 
-get_total_warehouse_data <- function(con, brand_name, stock_date, goods_categories , ...) {
+get_total_warehouse_data <- function(con, ..., brand_name,channel_type = NULL,
+                                     area_name = NULL,boss_name = NULL,shop_no = NULL, 
+                                     stock_date = Sys.Date()- 1, category_name  = c("镜架", "太阳镜")) {
 
   # store stcok
-  store_table <- filter(store(con), 一级部门 == brand_name)
-  sku_table <- sku(con) %>%
-    filter(分析大类 %in% goods_categories)
-  # inventory stock
+  store_table <- store(con,
+                       brand_name = brand_name, channel_type = channel_type,
+                       area_name = area_name, boss_name = boss_name, shop_no = shop_no
+  )
+  
+  sku_table <- sku(con, category_name = category_name)
+  
 
   res <- tbl(con, in_schema("DW", "DW_GOODS_STOCK_F")) %>%
     filter(SHOP_NO %in% c("DC01", "DC02", "EM01")) %>%
