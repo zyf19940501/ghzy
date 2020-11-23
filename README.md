@@ -1,13 +1,12 @@
 # ghzy
-Ghzy R
-<<<<<<< Updated upstream
+
 在实际工作中，取数逻辑稍微有些复杂，故把常用的取数逻辑用函数打包，减少后期取数时的代码量。
 
 
 ## install 
 
 devtools::install_github("zyf19940501/ghzy")
-=======
+
 在光合作用工作时，把常用的取数逻辑用函数打包，减少后期取数时的代码量，以及重复量。
 
 
@@ -50,5 +49,3 @@ dt <- get_sales_data(con,年,月,分析大类,SHOP_NO,start_date = '2020-10-17',
 dt <- get_sales_data(con,年,月,SHOP_NO,SKU_NO,start_date = '2020-10-17',end_date = '2020-11-16',brand_name = 'aojo事业部'，area_name = "华东")
 dt <- get_sales_data(con,年,月,SHOP_NO,SKU_NO,start_date = '2020-10-17',end_date = '2020-11-16',brand_name = 'aojo事业部',channel_type = "直营")
 ```
-
->>>>>>> Stashed changes
