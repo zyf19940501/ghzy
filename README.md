@@ -53,3 +53,25 @@ dt <- get_sales_data(con,年,月,SHOP_NO,SKU_NO,start_date = '2020-10-17',end_da
 dt <- get_shipment_data(con,年,月,start_date = '2020-01-01',end_date = '2020-10-25',brand_name = '木九十事业部')
 ```
 
+
+
+#### 库存数据
+
+用`get_stock_data()函数获取汇总的库存数据`
+
+```R
+#默认参数 stock_date = 昨天,category_name 参数默认等于镜架 太阳镜
+#按照SHOP_NO,SKU_NO 两个字段汇总 其余门店属性或商品属性可任意添加
+
+#group by SHOP_NO,SKU_NO
+ghzy::get_stock_data(con,SHOP_NO,SKU_NO,brand_name = '木九十事业部',category_name = c('镜架','太阳镜','镜片','老视成镜','防蓝光镜','隐形眼镜','周边商品','物料'))
+
+# 完整资料 可以先按照shop_no sku_no 汇总后关联门店信息表 商品信息表
+# step 1
+dt <- ghzy::get_stock_data(con,SHOP_NO,SKU_NO,brand_name = '木九十事业部',category_name = c('镜架','太阳镜','镜片','老视成镜','防蓝光镜','隐形眼镜','周边商品','物料'))
+store_table <- store(con,brand_name = c('木九十事业部','aojo事业部')) %>% collect()
+sku_table <- sku(con = con,category_name = c('镜架','太阳镜','镜片','老视成镜','防蓝光镜','隐形眼镜','周边商品','物料')) %>% collect()
+dt <- left_join(dt,store_table) %>% 
+  left(sku_table)
+```
+
