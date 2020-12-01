@@ -17,7 +17,7 @@
 #' @export
 #'
 #' @examples
-#' dt <- get_store_inventory_data(con = con,brand_name = 'mujosh',stock_date = lubridate::today()-days(1),goods_categories = c('lens'),SHOP_NO)
+#' dt <- get_store_inventory_data(con = con,SHOP_NO,brand_name = 'mujosh',stock_date = lubridate::today()-days(1),goods_categories = c('lens'))
 
 get_store_inventory_data <- function(con, ..., brand_name,channel_type = NULL,
                                      area_name = NULL,boss_name = NULL,shop_no = NULL, 
