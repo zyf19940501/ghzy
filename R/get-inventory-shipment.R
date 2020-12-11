@@ -16,8 +16,6 @@
 #' YH_NO 要货单号,WBSTK 发货状态
 #' 当需要添加字段时可用BILL_TYPE 字段，其余门店属性商品属性自行添加
 #' @encoding UTF-8
-#'
-#'
 #' @import dbplyr
 #' @return
 #' @export
