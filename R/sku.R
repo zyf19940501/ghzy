@@ -13,7 +13,7 @@
 #' @examples
 #' sku <- sku(con)
 
-sku <- function(con,category_name) {
+sku <- function(con,category_name = NULL) {
   
   if(is.null(category_name)){
     
