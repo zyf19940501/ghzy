@@ -38,9 +38,9 @@ drv <-dbDriver("Oracle")
 connect.string <- '(DESCRIPTION =(ADDRESS = (PROTOCOL = TCP)(HOST = localhost)(PORT = 1521))(CONNECT_DATA = (SERVER = DEDICATED)(SERVICE_NAME = ghbi) ))'
 con <- dbConnect(drv,username = "", password = "",dbname = connect.string)
 ## Not run
-dt <- get_sales_data(con,年,月,分析大类,SHOP_NO,start_date = '2020-10-17',end_date = '2020-11-16',brand_name = '木九十事业部',category_name = c('镜架','太阳镜'))
-dt <- get_sales_data(con,年,月,SHOP_NO,SKU_NO,start_date = '2020-10-17',end_date = '2020-11-16',brand_name = 'aojo事业部'，area_name = "华东")
-dt <- get_sales_data(con,年,月,SHOP_NO,SKU_NO,start_date = '2020-10-17',end_date = '2020-11-16',brand_name = 'aojo事业部',channel_type = "直营")
+dt <- get_sales_data(con,年,月,分析大类,SHOP_NO,start_date = '2020-10-17',end_date = '2020-11-16',brand_name = '事业部名称',category_name = c('镜架','太阳镜'))
+dt <- get_sales_data(con,年,月,SHOP_NO,SKU_NO,start_date = '2020-10-17',end_date = '2020-11-16',brand_name = '事业部名称1'，area_name = "华东")
+dt <- get_sales_data(con,年,月,SHOP_NO,SKU_NO,start_date = '2020-10-17',end_date = '2020-11-16',brand_name = '事业部名称1',channel_type = "直营")
 ```
 
 
@@ -53,7 +53,7 @@ dt <- get_sales_data(con,年,月,SHOP_NO,SKU_NO,start_date = '2020-10-17',end_da
 
 ```R
 ## not run
-dt <- get_shipment_data(con,年,月,start_date = '2020-01-01',end_date = '2020-10-25',brand_name = '木九十事业部')
+dt <- get_shipment_data(con,年,月,start_date = '2020-01-01',end_date = '2020-10-25',brand_name = '事业部名称')
 ```
 
 
@@ -72,12 +72,12 @@ dt <- get_shipment_data(con,年,月,start_date = '2020-01-01',end_date = '2020-1
 #按照SHOP_NO,SKU_NO 两个字段汇总 其余门店属性或商品属性可任意添加
 
 #group by SHOP_NO,SKU_NO
-dt <- get_stock_data(con,SHOP_NO,SKU_NO,brand_name = '木九十事业部',category_name = c('镜架','太阳镜','镜片','老视成镜','防蓝光镜','隐形眼镜','周边商品','物料'))
+dt <- get_stock_data(con,SHOP_NO,SKU_NO,brand_name = '事业部名称',category_name = c('镜架','太阳镜','镜片','老视成镜','防蓝光镜','隐形眼镜','周边商品','物料'))
 
 # 完整信息 可以先按照shop_no sku_no 汇总后关联门店信息表 商品信息表
 
-dt <- get_stock_data(con,SHOP_NO,SKU_NO,brand_name = '木九十事业部',category_name = c('镜架','太阳镜','镜片','老视成镜','防蓝光镜','隐形眼镜','周边商品','物料'))
-store_table <- store(con,brand_name = c('木九十事业部','aojo事业部')) %>% collect()
+dt <- get_stock_data(con,SHOP_NO,SKU_NO,brand_name = '事业部名称',category_name = c('镜架','太阳镜','镜片','老视成镜','防蓝光镜','隐形眼镜','周边商品','物料'))
+store_table <- store(con,brand_name = c('事业部名称','事业部名称1')) %>% collect()
 sku_table <- sku(con = con,category_name = c('镜架','太阳镜','镜片','老视成镜','防蓝光镜','隐形眼镜','周边商品','物料')) %>% collect()
 dt <- left_join(dt,store_table) %>% 
   left(sku_table)
@@ -89,7 +89,7 @@ dt <- left_join(dt,store_table) %>%
 用`get_total_warehouse_data()`函数获取总仓的库存数据，其余同上
 
 ``` R
-get_total_warehouse_data(con ,SHOP_NO,SKU_NO,brand_name = '木九十事业部')
+get_total_warehouse_data(con ,SHOP_NO,SKU_NO,brand_name = '事业部名称')
 ```
 
 
@@ -105,12 +105,12 @@ get_total_warehouse_data(con ,SHOP_NO,SKU_NO,brand_name = '木九十事业部')
 
 ``` R
 #单月合并
-dt <- merge_sales_stock_month_data(con = con,date = c('2020-10-01','2020-10-30'),brand_name = '木九十事业部')
+dt <- merge_sales_stock_month_data(con = con,date = c('2020-10-01','2020-10-30'),brand_name = '事业部名称')
 
 # 跨月合并
 # 一定时间周期内合并，如下所示：
-dt <- ghzy::merge_sales_stock_data(dates = c('2020-10-01','2020-11-30'),con = con, brand_name = '木九十事业部')
+dt <- ghzy::merge_sales_stock_data(dates = c('2020-10-01','2020-11-30'),con = con, brand_name = '事业部名称')
 
 # 其他完整月份库存是月末库存，11月的库存是11-10日的库存
-dt <- ghzy::merge_sales_stock_data(dates = c('2020-01-01','2020-11-10'),con = con, brand_name = '木九十事业部')
+dt <- ghzy::merge_sales_stock_data(dates = c('2020-01-01','2020-11-10'),con = con, brand_name = '事业部名称')
 ```
