@@ -5,10 +5,12 @@
 \alias{sku}
 \title{sku}
 \usage{
-sku(con)
+sku(con, category_name = NULL)
 }
 \arguments{
 \item{con}{BI con connector}
+
+\item{category_name}{the category name of goods}
 }
 \value{
 a dataframe

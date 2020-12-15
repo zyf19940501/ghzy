@@ -5,18 +5,39 @@
 \alias{get_shipment_data}
 \title{Title get shipment data from Finance shipment table}
 \usage{
-get_shipment_data(con, brand_name, start_date, end_date, ...)
+get_shipment_data(
+  con,
+  ...,
+  start_date,
+  end_date,
+  brand_name,
+  channel_type = NULL,
+  area_name = NULL,
+  boss_name = NULL,
+  shop_no = NULL,
+  category_name = NULL
+)
 }
 \arguments{
 \item{con}{BI connector}
 
-\item{brand_name}{事业部}
-
-\item{start_date}{时间周期}
-
-\item{end_date}{时间周期}
-
 \item{...}{汇总字段 可以按照 SHOP_NO,SKU_NO,年,月等}
+
+\item{start_date}{数据开始日期}
+
+\item{end_date}{数据结束日期}
+
+\item{brand_name}{事业部名称}
+
+\item{channel_type}{门店渠道}
+
+\item{area_name}{管辖区域}
+
+\item{boss_name}{加盟商客户}
+
+\item{shop_no}{the shop of Number}
+
+\item{category_name}{the category name of goods}
 }
 \value{
 shipment data
@@ -25,7 +46,7 @@ shipment data
 从财务出货表中获取出货数据
 }
 \examples{
-get_shipment_data(con,brand_name = '鏈ㄤ節鍗佷簨涓氶儴',start_date = '2020-01-01',end_date = '2020-10-25',骞<b4>,鏈<88>)
+get_shipment_data(con,骞<b4>,鏈<88>,start_date = '2020-01-01',end_date = '2020-10-25',brand_name = '鏈ㄤ節鍗佷簨涓氶儴')
 
 
 }

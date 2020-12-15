@@ -75,3 +75,16 @@ dt <- left_join(dt,store_table) %>%
   left(sku_table)
 ```
 
+
+#### 销售库存合并
+
+用`merge_sales_stock_date()`函数获取销售库存按照月份汇总后的数据至于具体的库存时间，根据指定的结束时间。
+
+```
+#单月合并
+dt <- merge_sales_stock_month_data(con = con,date = c('2020-10-01','2020-10-30'),brand_name = '木九十事业部')
+# 跨月一定时间周期内合并，如下所示：
+dt <- ghzy::merge_sales_stock_data(dates = c('2020-10-01','2020-11-30'),con = con, brand_name = '木九十事业部')
+# 其他完整月份库存是月末库存，11月的库存是11-10日的库存
+dt <- ghzy::merge_sales_stock_data(dates = c('2020-01-01','2020-11-10'),con = con, brand_name = '木九十事业部')
+```

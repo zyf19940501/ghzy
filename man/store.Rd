@@ -5,10 +5,27 @@
 \alias{store}
 \title{ghzy}
 \usage{
-store(con)
+store(
+  con,
+  brand_name,
+  channel_type = NULL,
+  area_name = NULL,
+  boss_name = NULL,
+  shop_no = NULL
+)
 }
 \arguments{
 \item{con}{BI con connector}
+
+\item{brand_name}{brand_name}
+
+\item{channel_type}{store type}
+
+\item{area_name}{the area of store}
+
+\item{shop_no}{the shop of Number}
+
+\item{boo_name}{the boss of store}
 }
 \value{
 a dataframe
@@ -17,5 +34,5 @@ a dataframe
 get the store information from BI database
 }
 \examples{
-store <- store(con)
+store <- store(con,brand_name = "mujosh")
 }

@@ -7,25 +7,37 @@
 \usage{
 get_stock_data(
   con,
+  ...,
   brand_name,
-  stock_date,
-  goods_categories = c("镜架", "太阳镜"),
-  ...
+  channel_type = NULL,
+  area_name = NULL,
+  boss_name = NULL,
+  shop_no = NULL,
+  stock_date = Sys.Date() - 1,
+  category_name = c("镜架", "太阳镜")
 )
 }
 \arguments{
 \item{con}{BI con connector}
 
-\item{brand_name}{事业部}
+\item{...}{需要添加汇总字段,默认年,月,SHOP_NO,SKU_NO}
+
+\item{brand_name}{事业部名称}
+
+\item{channel_type}{门店渠道}
+
+\item{area_name}{管辖区域}
+
+\item{boss_name}{加盟商客户}
+
+\item{shop_no}{the shop of Number}
 
 \item{stock_date}{库存日期 默认昨天}
 
-\item{goods_categories}{分析大类}
-
-\item{...}{需要添加汇总字段,默认年,月,SHOP_NO,SKU_NO}
+\item{category_name}{分析大类}
 }
 \value{
-库存数据 包含门店库存和总仓库存
+a data frame  包含门店库存和总仓库存 可由仓位类型区分
 }
 \description{
 从BI数仓中获取库存数据 按照年、月、SHOP_NO,SKU_NO汇总

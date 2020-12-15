@@ -5,25 +5,41 @@
 \alias{get_total_warehouse_data}
 \title{get total warehouse inventory from BI database}
 \usage{
-get_total_warehouse_data(con, brand_name, stock_date, goods_categories, ...)
+get_total_warehouse_data(
+  con,
+  ...,
+  brand_name,
+  channel_type = NULL,
+  area_name = NULL,
+  boss_name = NULL,
+  shop_no = NULL,
+  stock_date = Sys.Date() - 1,
+  category_name = c("镜架", "太阳镜")
+)
 }
 \arguments{
-\item{con}{BI con connector}
+\item{...}{需要添加汇总字段,默认年,月,SHOP_NO,SKU_NO}
 
-\item{brand_name}{事业部}
+\item{brand_name}{事业部名称}
+
+\item{channel_type}{门店渠道}
+
+\item{area_name}{管辖区域}
+
+\item{boss_name}{加盟商客户}
+
+\item{shop_no}{the shop of Number}
 
 \item{stock_date}{库存日期 默认昨天}
 
-\item{goods_categories}{分析大类}
-
-\item{...}{需要添加汇总字段,默认年,月,SHOP_NO,SKU_NO}
+\item{category_name}{分析大类}
 }
 \value{
-a data frame
+a data frame total warehouse
 }
 \description{
 get total warehouse inventory from BI database
 }
 \examples{
-dt <- get_total_warehouse_data(con = con,brand_name = 'mujosh',stock_date = lubridate::today()-days(1),goods_categories = c('lens'),SHOP_NO)
+dt <- get_total_warehouse_data(con = con,SHOP_NO,brand_name = 'mujosh',stock_date = lubridate::today()-days(1),goods_categories = c('lens'),SHOP_NO)
 }

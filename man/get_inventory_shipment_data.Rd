@@ -5,24 +5,45 @@
 \alias{get_inventory_shipment_data}
 \title{get warehouse shipment data from BI database}
 \usage{
-get_inventory_shipment_data(con, brand_name, start_date, end_date, ...)
+get_inventory_shipment_data(
+  con,
+  ...,
+  start_date,
+  end_date,
+  brand_name,
+  channel_type = NULL,
+  area_name = NULL,
+  boss_name = NULL,
+  shop_no = NULL,
+  category_name = NULL
+)
 }
 \arguments{
-\item{con}{BI con connector}
+\item{con}{BI connector}
 
-\item{brand_name}{事业部}
+\item{...}{汇总字段 可以按照 SHOP_NO,SKU_NO,年,月等}
 
-\item{start_date}{时间周期}
+\item{start_date}{数据开始日期}
 
-\item{end_date}{时间周期}
+\item{end_date}{数据结束日期}
 
-\item{...}{出货量汇总字段}
+\item{brand_name}{事业部名称}
+
+\item{channel_type}{门店渠道}
+
+\item{area_name}{管辖区域}
+
+\item{boss_name}{加盟商客户}
+
+\item{shop_no}{the shop of Number}
+
+\item{category_name}{the category name of goods}
 }
 \value{
 
 }
 \description{
-获取仓库发货数据
+get warehouse shipment data from BI database
 }
 \details{
 出货数据包含 "加盟期货发货单", "加盟现货发货单", "直营调拨发货单","直发订单发货单",'加盟政策性发货单'五种单据，
@@ -30,7 +51,7 @@ YH_NO 要货单号,WBSTK 发货状态
 当需要添加字段时可用BILL_TYPE 字段，其余门店属性商品属性自行添加
 }
 \examples{
-get_inventory_shipment_data(con = con,brand_name = 'mujosh',
-start_date = '2020-10-10',end_date = '2020-10-31',BILL_TYPE)
+get_inventory_shipment_data(con = con,BILL_TYPE,brand_name = 'mujosh',
+start_date = '2020-10-10',end_date = '2020-10-31',category = c("闀滄灦","澶槼闀<9c>"))
 
 }
