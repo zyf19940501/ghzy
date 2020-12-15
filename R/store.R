@@ -1,7 +1,6 @@
-#' @title ghzy
+#' @title store information
 #'
 #' @description  get the store information from BI database
-#'
 #'
 #' @param con  BI con connector
 #' @param brand_name brand_name
@@ -9,12 +8,19 @@
 #' @param area_name the area of store
 #' @param boo_name the boss of store
 #' @param shop_no the shop of Number
+#' @details  门店属性:SHOP_NO 门店名称 原ERP店编码 品牌 一级部门 门店性质 国家 管辖区域 省份 城市 城市等级 门店负责人 区域经理 经营状态
+#' 店铺类型 老板
+#'  
 #' @import dbplyr tidyverse
 #' @encoding UTF-8
-#' @return  a dataframe
+#' @return  a dbplyrlink
 #'
+#'  
+#' 
 #' @examples
 #' store <- store(con,brand_name = "mujosh")
+#' store <- store(con,brand_name = c("mujosh",'aojo'),channel_type= 'zhiying')
+#' store_table <- store(con,brand_name = "mujosh") %>% collect()
 #' @export
 #'
 #'

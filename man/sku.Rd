@@ -18,6 +18,11 @@ a dataframe
 \description{
 get the sku information from BI database
 }
+\details{
+商品属性:SKU_NO SAP_NO SKC_NO 款号 商品简称 商品名称 大类名称 中类名称 小类名称 定价品类 是否标配镜片 吊牌价 海外吊牌价 价格带
+ 厂商品牌 镜框材质 镜框大小 镜框款式 镜框颜色 眼镜框型 镜片功能 镜片颜色 能否染色 球镜 柱镜 折射率 商品品牌 系统上市时间 最早销售日期 SYS_ID
+ 分析大类
+}
 \examples{
 sku <- sku(con)
 }
