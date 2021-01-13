@@ -3,7 +3,7 @@
 \encoding{UTF-8}
 \name{store}
 \alias{store}
-\title{ghzy}
+\title{store information}
 \usage{
 store(
   con,
@@ -28,16 +28,17 @@ store(
 \item{boo_name}{the boss of store}
 }
 \value{
-a dataframe
+a dbplyrlink
 }
 \description{
 get the store information from BI database
 }
 \details{
 门店属性:SHOP_NO 门店名称 原ERP店编码 品牌 一级部门 门店性质 国家 管辖区域 省份 城市 城市等级 门店负责人 区域经理 经营状态
-
- 店铺类型 老板
+店铺类型 老板
 }
 \examples{
 store <- store(con,brand_name = "mujosh")
+store <- store(con,brand_name = c("mujosh",'aojo'),channel_type= 'zhiying')
+store_table <- store(con,brand_name = "mujosh") \%>\% collect()
 }

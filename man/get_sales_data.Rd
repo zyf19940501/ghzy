@@ -58,6 +58,6 @@ sales data
 }
 \examples{
 get_sales_data
-get_sales_data(con,闂ㄥ簵鎬ц川,鍒嗘瀽澶х被,start_date = '2020-01-01',end_date = '2020-10-25',brand_name = 'MUJOSH')
+get_sales_data(con,SHOP_NO,start_date = '2020-01-01',end_date = '2020-10-25',brand_name = 'MUJOSH')
 
 }

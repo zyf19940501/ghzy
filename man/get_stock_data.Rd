@@ -43,7 +43,7 @@ a data frame  包含门店库存和总仓库存 可由仓位类型区分
 从BI数仓中获取库存数据 按照年、月、SHOP_NO,SKU_NO汇总
 }
 \examples{
-dt <- get_stock_data(con = con,brand_name = 'mujosh',stock_date = lubridate::today()-days(1),goods_categories = c('闀滄灦','澶槼闀<9c>'),鍒嗘瀽澶х被,浠撲綅绫诲瀷)
+dt <- get_stock_data(con = con,brand_name = 'mujosh',stock_date = lubridate::today()-days(1),goods_categories = c('frame','sunglasses'),鍒嗘瀽澶х被,浠撲綅绫诲瀷)
 
 
 }

@@ -46,7 +46,7 @@ shipment data
 从财务出货表中获取出货数据
 }
 \examples{
-get_shipment_data(con,骞<b4>,鏈<88>,start_date = '2020-01-01',end_date = '2020-10-25',brand_name = '鏈ㄤ節鍗佷簨涓氶儴')
+get_shipment_data(con,SHOP_NO,SKU_NO,start_date = '2020-01-01',end_date = '2020-10-25',brand_name = '鏈ㄤ節鍗佷簨涓氶儴')
 
 
 }

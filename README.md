@@ -4,7 +4,7 @@
 
 
 
-### 安装
+## 安装
 
 github上下载
 
@@ -16,11 +16,11 @@ Gitee下载
 
 
 
-### 使用示例
+## 使用示例
 
 
 
-#### 销售数据
+### 销售数据
 
 用`get_salse_data()`函数获取按照目标维度汇总的销售数据
 
@@ -45,7 +45,9 @@ dt <- get_sales_data(con,年,月,SHOP_NO,SKU_NO,start_date = '2020-10-17',end_da
 
 
 
-#### 出货数据
+### 出货数据
+
+#### 财务出货口径
 
 用`get_shipment_data()`函数获取汇总的出货数据
 
@@ -56,11 +58,19 @@ dt <- get_sales_data(con,年,月,SHOP_NO,SKU_NO,start_date = '2020-10-17',end_da
 dt <- get_shipment_data(con,年,月,start_date = '2020-01-01',end_date = '2020-10-25',brand_name = '事业部名称')
 ```
 
+#### 总仓出货口径
+
+```R
+# 可以添加出货类型字段汇总
+dt <- get_inventory_shipment_data(con = con,BILL_TYPE,brand_name = 'mujosh',start_date = '2020-10-10',end_date = '2020-10-31',
+category = c("镜架","太阳镜"))
+```
 
 
-#### 库存数据
 
-- 门店总仓库存
+### 库存数据
+
+#### 门店总仓库存
 
 用`get_stock_data()函数获取汇总的库存数据`，包含门店以及总仓库存
 
@@ -83,8 +93,7 @@ dt <- left_join(dt,store_table) %>%
   left(sku_table)
 ```
 
-
-- 总仓库存
+#### 总仓库存
 
 用`get_total_warehouse_data()`函数获取总仓的库存数据，其余同上
 
@@ -93,7 +102,7 @@ get_total_warehouse_data(con ,SHOP_NO,SKU_NO,brand_name = '事业部名称')
 ```
 
 
-#### 销售库存合并
+### 销售库存合并
 
 用`merge_sales_stock_date()`函数获取销售库存合并后的数据，按照全连接的方式。
 
