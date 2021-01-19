@@ -14,6 +14,10 @@ devtools::install_github('zyf19940501/ghzy')
 
 Gitee下载
 
+```R
+remotes::install_git('https://gitee.com/zhongyufei/ghzy')
+```
+
 
 
 ## 使用示例
