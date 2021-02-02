@@ -3,7 +3,7 @@
 #' @description  full join sales data and stock data pro
 #' @param dates  the list of date
 #' @param con  BI con connector
-#' @param date the start date of you select 
+#' @param dates the start date of you select 
 #' @param brand_name  the name of brand
 #' @param channel_type direct store and franchise store ,the channel of store sales
 #' @param area_name area name 

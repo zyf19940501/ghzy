@@ -43,20 +43,22 @@ get_inventory_shipment_data(
 \item{WBSTK}{发货状态 默认为已经处理完成}
 }
 \value{
-
+total warehouse shipment data.frame
 }
 \description{
 get warehouse shipment data from BI database
 }
 \details{
-出货数据包含 "加盟期货发货单", "加盟现货发货单", "直营调拨发货单","直发订单发货单",'加盟政策性发货单','加盟退货收货单' 
+出货数据包含 "加盟期货发货单", "加盟现货发货单", "直营调拨发货单","直发订单发货单",'加盟政策性发货单','加盟退货收货单'
 '加盟免费发货单'等单据
 
 YH_NO 要货单号,WBSTK 发货状态,默认为已经处理完成
 当需要添加字段时可用BILL_TYPE 字段，其余门店属性商品属性自行添加
 }
 \examples{
-get_inventory_shipment_data(con = con,BILL_TYPE,brand_name = 'mujosh',
-start_date = '2020-10-10',end_date = '2020-10-31',category = c("frame","sunglasses"))
+get_inventory_shipment_data(
+  con = con, BILL_TYPE, brand_name = "mujosh",
+  start_date = "2020-10-10", end_date = "2020-10-31", category = c("frame", "sunglasses")
+)
 
 }

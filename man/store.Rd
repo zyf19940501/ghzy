@@ -23,9 +23,9 @@ store(
 
 \item{area_name}{the area of store}
 
-\item{shop_no}{the shop of Number}
+\item{boss_name}{the boss of store}
 
-\item{boo_name}{the boss of store}
+\item{shop_no}{the shop of Number}
 }
 \value{
 a dbplyrlink

@@ -40,7 +40,7 @@ get_purchase_data(
 \item{category_name}{the category name of goods}
 }
 \value{
-
+a data.frame
 }
 \description{
 采购入库数据

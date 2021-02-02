@@ -14,7 +14,7 @@
 #' @encoding UTF-8
 #' @import dbplyr
 #' @import lubridate
-#' @return
+#' @return a data.frame
 #' @export
 #'
 #' @examples
@@ -23,17 +23,18 @@
 #'get_purchase_data(con,SHOP_NO,brand_name = 'brand',start_date = '2021-01-01',end_date = '2021-01-10',category_name = 'frame')
 #'
 get_purchase_data <- function(con, ..., start_date, end_date,
-                                        brand_name, channel_type = NULL, area_name = NULL,
-                                        boss_name = NULL, shop_no = NULL, category_name = NULL) {
+                              brand_name, channel_type = NULL, area_name = NULL,
+                              boss_name = NULL, shop_no = NULL, category_name = NULL) {
   
-  store_table <- store(con,brand_name = brand_name,channel_type = channel_type ,area_name = area_name,boss_name = boss_name,shop_no = shop_no)
+  store_table <- store(con, brand_name = brand_name, channel_type = channel_type, area_name = area_name,                              boss_name = boss_name, shop_no = shop_no)
+  
   sku_table <- sku(con, category_name = category_name)
-  
+
   tbl(con, in_schema("DW", "DW_PURCHASE_STOCK_F")) %>%
-    select(SHOP_NO,STOR_NO,QTY,PRICE,SKU_NO,BILL_DATE) %>% 
-    filter(between(BILL_DATE, to_date(start_date, "yyyy-mm-dd"),to_date(end_date, "yyyy-mm-dd")))%>%
-    filter(STOR_NO %in% c('DC011001','DC011996','DC011997','DC021001','DC021996','DC021997')) %>%  
-    mutate(SHOP_NO = STOR_NO,年 = year(BILL_DATE), 月 = month(BILL_DATE)) %>%
+    select(SHOP_NO, STOR_NO, QTY, PRICE, SKU_NO, BILL_DATE) %>%
+    filter(between(BILL_DATE, to_date(start_date, "yyyy-mm-dd"), to_date(end_date, "yyyy-mm-dd"))) %>%
+    filter(STOR_NO %in% c("DC011001", "DC011996", "DC011997", "DC021001", "DC021996", "DC021997")) %>%
+    mutate(SHOP_NO = STOR_NO, 年 = year(BILL_DATE), 月 = month(BILL_DATE)) %>%
     inner_join(store_table) %>%
     inner_join(sku_table) %>%
     group_by(...) %>%

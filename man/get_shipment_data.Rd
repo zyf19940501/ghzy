@@ -40,7 +40,7 @@ get_shipment_data(
 \item{category_name}{the category name of goods}
 }
 \value{
-shipment data
+shipment data.frame
 }
 \description{
 从财务出货表中获取出货数据

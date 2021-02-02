@@ -1,6 +1,6 @@
 
 #' get total warehouse inventory from BI database
-#'
+#' @param con  BI con connector
 #' @param ... 需要添加汇总字段,默认年,月,SHOP_NO,SKU_NO
 #' @param brand_name  事业部名称
 #' @param channel_type 门店渠道

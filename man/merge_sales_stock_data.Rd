@@ -17,7 +17,7 @@ merge_sales_stock_data(
 )
 }
 \arguments{
-\item{dates}{the list of date}
+\item{dates}{the start date of you select}
 
 \item{con}{BI con connector}
 
@@ -32,8 +32,6 @@ merge_sales_stock_data(
 \item{category_name}{the category name of goods}
 
 \item{shop_no}{the shop of Number}
-
-\item{date}{the start date of you select}
 }
 \value{
 a dataframe
