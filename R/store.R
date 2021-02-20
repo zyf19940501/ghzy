@@ -35,14 +35,14 @@ store <- function(con,brand_name,channel_type = NULL ,area_name = NULL,boss_name
       SHOP_NO, SHOP_NAME, ERP_NO, BRAND_NAME, SHOP_TYPE39,
       SHOP_TYPE29, COUNT_NAME, SHOP_AREA, PROVINCE_NAME, CITY_NAME, NIELS,
       SHOP_PNAME1, SHOP_PNAME2, SHOP_TYPE04, SHOP_TYPE05, SHOP_TYPE15,
-      SHOP_TYPE36, SHOP_TYPE37, SHOP_TYPE48, SHOP_TYPE47, SHOP_TYPE49, SHOP_BRAN
+      SHOP_TYPE36, SHOP_TYPE37, SHOP_TYPE48, SHOP_TYPE47, SHOP_TYPE49, SHOP_BRAN,SHOP_TYPE17
     ) %>%
     rename(
       SHOP_NO = SHOP_NO, 门店名称 = SHOP_NAME, 原ERP店编码 = ERP_NO, 品牌 = BRAND_NAME, 一级部门 = SHOP_TYPE39,
       门店性质 = SHOP_TYPE29, 国家 = COUNT_NAME, 管辖区域 = SHOP_AREA, 省份 = PROVINCE_NAME, 城市 = CITY_NAME,
       城市等级 = NIELS, 门店负责人 = SHOP_PNAME1, 区域经理 = SHOP_PNAME2, 经营状态 = SHOP_TYPE04, 店铺类型 = SHOP_TYPE05,
       老板 = SHOP_TYPE15, 加盟商编码 = SHOP_TYPE36, 加盟商名称 = SHOP_TYPE37, 重点客户标识 = SHOP_TYPE48, 年可比店 = SHOP_TYPE47,
-      当月可比店 = SHOP_TYPE49, 门店属性 = SHOP_BRAN
+      当月可比店 = SHOP_TYPE49, 门店属性 = SHOP_BRAN,区域 = SHOP_TYPE17
     ) %>% # rename
     mutate(仓位类型 = '门店库存')
 
@@ -79,7 +79,8 @@ store <- function(con,brand_name,channel_type = NULL ,area_name = NULL,boss_name
       SHOP_TYPE48 = 1,
       SHOP_TYPE47 = "1",
       SHOP_TYPE49 = "1",
-      SHOP_BRAN = "总仓"
+      SHOP_BRAN = "总仓" ,
+      SHOP_TYPE17 = "区域"
     ) %>%
     rename(
       SHOP_NO = SHOP_NO, 门店名称 = SHOP_NAME, 原ERP店编码 = ERP_NO, 品牌 = BRAND_NAME, 一级部门 = SHOP_TYPE39,
