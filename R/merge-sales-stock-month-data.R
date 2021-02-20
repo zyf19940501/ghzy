@@ -25,8 +25,8 @@
 #' @return a data.frame about sales and stock data
 #'
 #' @examples
-#' get_sales_data
-#' get_sales_data(con,门店性质,分析大类,start_date = '2020-01-01',end_date = '2020-10-25',brand_name = 'MUJOSH')
+#' # Not run
+#' merge_sales_stock_month_data(con,category_name,date = list('2020-01-01','2020-10-25'),brand_name = 'MUJOSH')
 #'
 #' @encoding UTF-8
 #' @export
