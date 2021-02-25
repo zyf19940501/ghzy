@@ -18,7 +18,7 @@
 #' @export
 #'
 #' @examples
-#' dt <- get_stock_data(con = con,brand_name = 'mujosh',stock_date = lubridate::today()-days(1),goods_categories = c('frame','sunglasses'),分析大类,仓位类型)
+#' dt <- get_stock_data(con = con,SHOP_NO,SKU_NO,brand_name = 'mujosh',stock_date = lubridate::today()-days(1),goods_categories = c('frame','sunglasses'))
 #'
 #'
 get_stock_data <- function(con, ..., brand_name,channel_type = NULL,area_name = NULL,boss_name = NULL,shop_no = NULL, 
