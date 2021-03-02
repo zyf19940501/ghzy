@@ -16,7 +16,7 @@
 
 #' @examples
 #' sku <- sku(con)
-#' sku_table <- sku(con,category_name = 'frame') %>% collect()
+#' sku_table <- sku(con,category_name = c('frame','sunglasses')) %>% collect()
 
 sku <- function(con, category_name = NULL) {
   if (is.null(category_name)) {

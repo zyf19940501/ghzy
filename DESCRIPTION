@@ -1,7 +1,7 @@
 Package: ghzy
 Type: Package
 Title: Ghzy R
-Version: 0.1.9
+Version: 0.1.10
 Author: yufei zhong
 Maintainer: The package maintainer <yourself@somewhere.net>
 Description: Mujosh and aojo database.
