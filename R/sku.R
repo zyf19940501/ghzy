@@ -27,14 +27,14 @@ sku <- function(con, category_name = NULL) {
         GOODS_NAME1, GOODS_NAME2, GOODS_NAME3, KONDM, GOODS_TYPE1,
         KBETR, UPR_HK, GOODS_TYPE2, ZBRAND, ZTX021,ZJKCZ, ZJKDX,
         ZJKKS, ZJKYS, ZYJKX, ZJPGN, ZJPYS, ZNFRS, ZGXSJ, FSH_SEASON_YEAR, ZTX009,
-        ZQJ, ZZJ, ZZSL, BRAND_NAME, BG_DATE, BG_DATE1, SYS_ID
+        ZQJ, ZZJ, ZZSL, BRAND_NAME, BG_DATE, BG_DATE1, SYS_ID,ZTX012,ZTX013,ZSFPG
       ) %>%
       rename(
         SAP_NO = SAP_NO, 款号 = CUSTOM_NO, 商品简称 = FREE_CHAR, 商品名称 = GOODS_NAME, 大类名称 = GOODS_NAME1,
         中类名称 = GOODS_NAME2, 小类名称 = GOODS_NAME3, 定价品类 = KONDM, 是否标配镜片 = GOODS_TYPE1, 吊牌价 = KBETR,
         海外吊牌价 = UPR_HK, 价格带 = GOODS_TYPE2, 厂商品牌 = ZBRAND,材质 = ZTX021, 镜框材质 = ZJKCZ, 镜框大小 = ZJKDX, 镜框款式 = ZJKKS,
         镜框颜色 = ZJKYS, 眼镜框型 = ZYJKX, 镜片功能 = ZJPGN, 镜片颜色 = ZJPYS, 能否染色 = ZNFRS, 光学设计 = ZGXSJ, 商品年份 = FSH_SEASON_YEAR, 性别 = ZTX009, 球镜 = ZQJ, 柱镜 = ZZJ, 折射率 = ZZSL,
-        商品品牌 = BRAND_NAME, 系统上市时间 = BG_DATE, 最早销售日期 = BG_DATE1, SYS_ID = SYS_ID
+        商品品牌 = BRAND_NAME, 系统上市时间 = BG_DATE, 最早销售日期 = BG_DATE1, SYS_ID = SYS_ID, 商品群 = ZTX012,  销售渠道 = ZTX013,是否偏光 = ZSFPG
       ) %>% # SYS_ID = 1 SAP
       mutate(分析大类 = case_when(
         大类名称 == "镜架" ~ "镜架",
@@ -55,14 +55,14 @@ sku <- function(con, category_name = NULL) {
         GOODS_NAME1, GOODS_NAME2, GOODS_NAME3, KONDM, GOODS_TYPE1,
         KBETR, UPR_HK, GOODS_TYPE2, ZBRAND, ZTX021,ZJKCZ, ZJKDX,
         ZJKKS, ZJKYS, ZYJKX, ZJPGN, ZJPYS, ZNFRS, ZGXSJ, FSH_SEASON_YEAR, ZTX009,
-        ZQJ, ZZJ, ZZSL, BRAND_NAME, BG_DATE, BG_DATE1, SYS_ID
+        ZQJ, ZZJ, ZZSL, BRAND_NAME, BG_DATE, BG_DATE1, SYS_ID,ZTX012,ZTX013,ZSFPG
       ) %>%
       rename(
         SAP_NO = SAP_NO, 款号 = CUSTOM_NO, 商品简称 = FREE_CHAR, 商品名称 = GOODS_NAME, 大类名称 = GOODS_NAME1,
         中类名称 = GOODS_NAME2, 小类名称 = GOODS_NAME3, 定价品类 = KONDM, 是否标配镜片 = GOODS_TYPE1, 吊牌价 = KBETR,
         海外吊牌价 = UPR_HK, 价格带 = GOODS_TYPE2, 厂商品牌 = ZBRAND, 材质 = ZTX021,镜框材质 = ZJKCZ, 镜框大小 = ZJKDX, 镜框款式 = ZJKKS,
         镜框颜色 = ZJKYS, 眼镜框型 = ZYJKX, 镜片功能 = ZJPGN, 镜片颜色 = ZJPYS, 能否染色 = ZNFRS, 光学设计 = ZGXSJ, 商品年份 = FSH_SEASON_YEAR, 性别 = ZTX009, 球镜 = ZQJ, 柱镜 = ZZJ, 折射率 = ZZSL,
-        商品品牌 = BRAND_NAME, 系统上市时间 = BG_DATE, 最早销售日期 = BG_DATE1, SYS_ID = SYS_ID
+        商品品牌 = BRAND_NAME, 系统上市时间 = BG_DATE, 最早销售日期 = BG_DATE1, SYS_ID = SYS_ID, 商品群 = ZTX012,  销售渠道 = ZTX013,是否偏光 = ZSFPG
       ) %>% # SYS_ID = 1 SAP
       mutate(分析大类 = case_when(
         大类名称 == "镜架" ~ "镜架",
