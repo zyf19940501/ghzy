@@ -44,7 +44,9 @@ get_inventory_shipment_data <- function(con, ..., start_date, end_date,
       ),
       BILL_TYPE %in% c("直营调拨发货单", "加盟期货发货单", "加盟现货发货单", "加盟免费发货单", "加盟政策性发货单", "加盟退货收货单", "直发订单发货单")
     ) %>%
-    filter(STOR_NO %in% c("DC011001", "DC011998", "DC011005", "DC011006", "DC012998", "DC012999"), 
+    filter(STOR_NO %in% 
+             c("DC011001", "DC011998", "DC011005", "DC011006", "DC012998", "DC012999",
+               "DC021001", "DC021998", "DC021005", "DC021006", "DC022998", "DC022999"), 
            WBSTK == WBSTK) %>% # 完全处理完成
     mutate(出货类型 = case_when(QTY > 0 ~ "正常出货", QTY < 0 ~ "出货退货", QTY == 0 ~ "未出货")) %>%
     mutate(年 = year(BILL_DATE), 月 = month(BILL_DATE)) %>%
