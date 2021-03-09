@@ -33,7 +33,8 @@ get_purchase_data <- function(con, ..., start_date, end_date,
   tbl(con, in_schema("DW", "DW_PURCHASE_STOCK_F")) %>%
     select(SHOP_NO, STOR_NO, QTY, PRICE, SKU_NO, BILL_DATE) %>%
     filter(between(BILL_DATE, to_date(start_date, "yyyy-mm-dd"), to_date(end_date, "yyyy-mm-dd"))) %>%
-    filter(STOR_NO %in% c("DC011001", "DC011996", "DC011997", "DC021001", "DC021996", "DC021997")) %>%
+    filter(STOR_NO %in% c("DC011001","DC011994", "DC011996", "DC011997", 
+                          "DC021001","DC021994", "DC021996", "DC021997")) %>%
     mutate(SHOP_NO = STOR_NO, 年 = year(BILL_DATE), 月 = month(BILL_DATE)) %>%
     inner_join(store_table) %>%
     inner_join(sku_table) %>%
