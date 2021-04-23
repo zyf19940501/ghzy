@@ -7,6 +7,7 @@
 #' @param channel_type store type
 #' @param area_name the area of store
 #' @param boss_name the boss of store
+#' @param city_name the city name of store
 #' @param shop_no the shop of Number
 #' @details  门店属性:SHOP_NO 门店名称 原ERP店编码 品牌 一级部门 门店性质 国家 管辖区域 省份 城市 城市等级 门店负责人 区域经理 经营状态
 #' 店铺类型 老板
@@ -27,7 +28,7 @@
 
 
 
-store <- function(con,brand_name,channel_type = NULL ,area_name = NULL,boss_name = NULL,shop_no = NULL) {
+store <- function(con,brand_name,channel_type = NULL ,area_name = NULL,boss_name = NULL,city_name = NULL,shop_no = NULL) {
 
   # store information
   store_table1 <- tbl(con, in_schema("DW", "MD_SHOP_DETAIL")) %>%
@@ -124,6 +125,12 @@ store <- function(con,brand_name,channel_type = NULL ,area_name = NULL,boss_name
     store_table <- store_table
   } else {
     store_table <- store_table %>%  filter(老板 %in% boss_name)
+  }
+  
+  if(is.null(city_name)){
+    store_table <- store_table
+  } else {
+    store_table <- store_table %>%  filter(城市 %in% city_name)
   }
   
   if(is.null(shop_no)){

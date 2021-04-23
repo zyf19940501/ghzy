@@ -12,6 +12,7 @@
 #' @param channel_type 门店渠道
 #' @param area_name 管辖区域 
 #' @param boss_name 加盟商客户
+#' @param city_name the city name of store
 #' @param shop_no the shop of Number
 #' @param category_name the category name of goods
 #' 
@@ -41,9 +42,11 @@
 
 
 
-get_sales_data <- function(con,...,start_date,end_date,brand_name,channel_type = NULL ,area_name = NULL,boss_name = NULL,category_name = NULL,shop_no = NULL){
+get_sales_data <- function(con,...,start_date,end_date,brand_name,channel_type = NULL ,
+                           area_name = NULL,boss_name = NULL,city_name = NULL,category_name = NULL,shop_no = NULL){
 
-  store_table <- store(con,brand_name = brand_name,channel_type = channel_type ,area_name = area_name,boss_name = boss_name,shop_no = shop_no)
+  store_table <- store(con,brand_name = brand_name,channel_type = channel_type ,
+                       area_name = area_name,boss_name = boss_name,city_name = city_name,shop_no = shop_no)
   
   sku_table <- sku(con,category_name =  category_name )
   
