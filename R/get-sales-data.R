@@ -51,7 +51,7 @@ get_sales_data <- function(con,...,start_date,end_date,brand_name,channel_type =
   sku_table <- sku(con,category_name =  category_name )
   
   tbl(con, in_schema("DW", "DW_SALE_SHOP_F")) %>%
-    select(BILL_DATE1, SKU_NO, SHOP_NO, BILL_QTY, BILL_MONEY2, PRICE) %>%
+    # select(BILL_DATE1, SKU_NO, SHOP_NO, BILL_QTY, BILL_MONEY2, PRICE) %>%
     filter(between(
       BILL_DATE1, to_date(start_date, "yyyy-mm-dd"),
       to_date(end_date, "yyyy-mm-dd")
