@@ -50,7 +50,7 @@ store <- function(con,brand_name,channel_type = NULL ,area_name = NULL,boss_name
 
   store_table2 <- tbl(con, in_schema("DW", "MD_HOUSE_DETAIL")) %>%
     select(SHOP_NO = STOR_NO, SHOP_NAME = STORE_NAME, fuzhu1 = SHOP_NO) %>%
-    filter(SHOP_NO %in% c("DC012001","DC011001", "DC011002", "DC011994", "DC011998", "DC011999", "DC011003", "DC011996", "DC011997", "EM061001", "DC021001", "DC021002", "DC021994", "DC021998", "DC021999", "DC021003", "DC021996", "DC021997")) %>%
+    filter(SHOP_NO %in% c("DC012001","DC011001", "DC011002", "DC011994", "DC011998", "DC011999", "DC011003", "DC011996", "DC011997","DC016001", "EM061001", "DC021001", "DC021002", "DC021994", "DC021998", "DC021999", "DC021003", "DC021996", "DC021997")) %>%
     mutate(ERP_NO = "") %>%
     mutate(BRAND_NAME = case_when(
       fuzhu1 == "DC01" ~ "木九十",
