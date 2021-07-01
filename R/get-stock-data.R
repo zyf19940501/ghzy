@@ -45,7 +45,7 @@ get_stock_data <- function(con, ..., brand_name,channel_type = NULL,area_name = 
   # inventory stock
 
   res2 <- tbl(con, in_schema("DW", "DW_GOODS_STOCK_F")) %>%
-    filter(SHOP_NO %in% c("DC01", "DC02", "EM01")) %>%
+    filter(SHOP_NO %in% c("DC01", "DC02", "EM01","EM06")) %>%
     filter(
       STOCK_DATE == to_date(stock_date, "yyyy-mm-dd")
     ) %>%
