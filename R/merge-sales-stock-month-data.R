@@ -102,7 +102,7 @@ merge_sales_stock_month_data <- function(con,date,brand_name,channel_type = NULL
     inner_join(sku_table) %>%
     group_by(年,月,SHOP_NO,SKU_NO) %>%
     summarise(
-      可用库存 = sum(STOCK_QTY1, na.rm = TRUE),
+      可用库存 = sum(STOCK_QTY, na.rm = TRUE),
       非限制使用库存 = sum(STOCK_QTY2, na.rm = TRUE),
       库存吊牌金额 = sum(PRICE, na.rm = TRUE)
     ) %>%
